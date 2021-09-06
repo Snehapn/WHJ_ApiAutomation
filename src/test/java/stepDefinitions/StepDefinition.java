@@ -3,6 +3,9 @@ package stepDefinitions;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -25,17 +28,17 @@ public class StepDefinition extends Utils {
 	Response response;
 	TestDataBuild data = new TestDataBuild();
 	
-	@Given("minimalFieldRegister payload")
-	public void minimal_field_register_payload() {
+	@Given("minimalFieldRegister payload with {string} {string}")
+	public void minimal_field_register_payload_with(String mobile, String grade) throws IOException {
 
-		resspec = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
 
-		res = given().spec(requestSpecification()).body(data.RegisterPayload());
+		res = given().spec(requestSpecification()).body(data.RegisterPayload(mobile, grade ));
 	}
 
 	@When("user calls minimalFieldRegister API with Post http request")
 	public void user_calls_minimal_field_register_api_with_post_http_request() {
 
+		resspec = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
 		response = res.when().post("/api/V1/trial/users/minimalFieldRegister").then().spec(resspec).assertThat()
 				.statusCode(200).extract().response();
 

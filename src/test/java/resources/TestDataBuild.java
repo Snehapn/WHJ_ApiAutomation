@@ -4,14 +4,14 @@ import pojo.RegisterPayload1;
 
 public class TestDataBuild {
 
-	public RegisterPayload1 RegisterPayload() {
+	public RegisterPayload1 RegisterPayload(String mobile, String grade) {
 		RegisterPayload1 rp = new RegisterPayload1();
 		rp.setCity("Mumbai");
 		rp.setCountryCode("IN");
 		rp.setDefaultLang("en_US");
 		rp.setDelayedLaptopFlow(false);
 		rp.setDialCode("91");
-		rp.setGrade("7");
+		rp.setGrade(grade);
 		rp.setImmediateStartClassFlow(false);
 		rp.setIs3FieldFlow(true);
 		// rp.isAddlc(true);
@@ -21,7 +21,7 @@ public class TestDataBuild {
 		// rp.isRegisterAndVerifyApi(false);
 		rp.setLatitude(19.0748);
 		rp.setLongitude(72.8856);
-		rp.setMobile("9853563745");
+		rp.setMobile(mobile);
 		rp.setOtp("9720");
 		rp.setPostalCode("400070");
 		rp.setSessionId(0);

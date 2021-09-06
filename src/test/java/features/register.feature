@@ -1,8 +1,8 @@
 Feature: Register new student
  
-Scenario: Verify whether student is successfully registered using minimalFieldRegister API
+Scenario Outline: Verify whether student is successfully registered using minimalFieldRegister API
 
-	Given minimalFieldRegister payload
+	Given minimalFieldRegister payload with "<mobile>" "<grade>"
 	When user calls minimalFieldRegister API with Post http request
 	Then API call is success with status code 200
 	And "success" in response body is "true"
@@ -10,3 +10,7 @@ Scenario: Verify whether student is successfully registered using minimalFieldRe
 	
 
 
+Examples:
+	|mobile     | grade | 
+	|9757076438 | 2     | 
+	|9967675980 | 7		| 
